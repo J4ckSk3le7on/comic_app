@@ -1,5 +1,6 @@
 import 'package:comic_app/pages/home_page/widgets/paginate_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class GridWidget extends StatefulWidget {
   final ScrollController scrollController;
@@ -21,9 +22,9 @@ class _GridWidgetState extends State<GridWidget> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 2/3
+        childAspectRatio: SizerUtil.deviceType == DeviceType.tablet ? 2/1.2 : 2/3
       ),
       controller: widget.scrollController,
       physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),

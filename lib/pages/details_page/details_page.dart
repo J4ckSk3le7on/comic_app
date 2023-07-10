@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  final int comicId;
+
+  const DetailsPage({
+    Key? key,
+    required this.comicId
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +17,9 @@ class DetailsPage extends StatelessWidget {
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.desktop 
           || sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
-          return const DesktopTabletDetailsPage();
+          return DesktopTabletDetailsPage(comicId: comicId);
         }
-        return const MobileDetailsPage();
+        return MobileDetailsPage(comicId: comicId);
       },
     );
   }

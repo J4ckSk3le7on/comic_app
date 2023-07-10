@@ -1,6 +1,5 @@
+import 'package:comic_app/core/enums/enums.dart';
 import 'package:flutter/material.dart';
-
-enum HomeViewType {list, grid}
 
 class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget{
   final void Function(HomeViewType viewType) changeView;

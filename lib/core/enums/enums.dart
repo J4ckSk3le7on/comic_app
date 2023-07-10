@@ -1,0 +1,1 @@
+enum HomeViewType {list, grid}

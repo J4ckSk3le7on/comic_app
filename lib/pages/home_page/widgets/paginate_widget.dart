@@ -1,5 +1,5 @@
+import 'package:comic_app/core/enums/enums.dart';
 import 'package:comic_app/pages/home_page/widgets/grid_widget.dart';
-import 'package:comic_app/pages/home_page/widgets/home_page_appbar.dart';
 import 'package:comic_app/pages/home_page/widgets/list_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
