@@ -8,8 +8,6 @@ class _ComicsServices {
   final String _issuesUrl = "/api/issues/";
   final String _issueUrl = "/api/issue/";
 
-  // api/issue/4000-6/?api_key=7571ff2f85c9cd481845107c3fe90c89385b1b8c&format=json
-
   Future<IssuesModel> getIssues(int offset) async {
     Uri url = Uri.https(_baseUrl, _issuesUrl, {
       'api_key': dotenv.env['COMIC_API_KEY'],
