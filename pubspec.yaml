@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  http: ^1.1.0
+  responsive_builder: ^0.7.0
+  sizer: ^2.0.15
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
