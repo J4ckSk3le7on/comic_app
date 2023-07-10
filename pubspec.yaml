@@ -15,6 +15,7 @@ dependencies:
   responsive_builder: ^0.7.0
   sizer: ^2.0.15
   flutter_dotenv: ^5.1.0
+  mvc_pattern: ^8.12.0
 
 dev_dependencies:
   flutter_test:

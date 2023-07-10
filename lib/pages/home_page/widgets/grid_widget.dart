@@ -1,10 +1,41 @@
+import 'package:comic_app/pages/home_page/widgets/paginate_widget.dart';
 import 'package:flutter/material.dart';
 
-class GridWidget extends StatelessWidget {
-  const GridWidget({Key? key}) : super(key: key);
+class GridWidget extends StatefulWidget {
+  final ScrollController scrollController;
+  final int itemCount;
+  final List<Widget>? items;
+
+  const GridWidget({
+    Key? key,
+    required this.scrollController,
+    required this.itemCount,
+    required this.items
+  }) : super(key: key);
 
   @override
+  State<GridWidget> createState() => _GridWidgetState();
+}
+
+class _GridWidgetState extends State<GridWidget> {
+  @override
   Widget build(BuildContext context) {
-    return Container();
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 5,
+        crossAxisSpacing: 5.0,
+        mainAxisSpacing: 5.0,
+      ),
+      controller: widget.scrollController,
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      cacheExtent: MediaQuery.of(context).size.height * 1,
+      addAutomaticKeepAlives: true,
+      shrinkWrap: true,
+      itemCount: widget.itemCount,
+      itemBuilder: (context, index) {
+        return Item(child: widget.items![index]);
+      },
+    );
   }
+
 }
