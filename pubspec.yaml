@@ -14,6 +14,7 @@ dependencies:
   http: ^1.1.0
   responsive_builder: ^0.7.0
   sizer: ^2.0.15
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -22,5 +23,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
+
+assets:
+  - .env
