@@ -28,7 +28,10 @@ class _ListWidgetState extends State<ListWidget> {
       shrinkWrap: true,
       itemCount: widget.itemCount,
       itemBuilder: (context, index) {
-        return Item(child: widget.items![index]);
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Item(child: widget.items![index]),
+        );
       },
     );
   }

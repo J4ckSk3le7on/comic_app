@@ -22,9 +22,8 @@ class _GridWidgetState extends State<GridWidget> {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5,
-        crossAxisSpacing: 5.0,
-        mainAxisSpacing: 5.0,
+        crossAxisCount: 2,
+        childAspectRatio: 2/3
       ),
       controller: widget.scrollController,
       physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),

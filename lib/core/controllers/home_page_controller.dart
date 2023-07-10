@@ -3,7 +3,7 @@ import 'package:comic_app/core/services/comics_services.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class HomePageController extends ControllerMVC {
-  List? list;
+  List<Result>? list;
   late bool error = false;
   late int offset = 0;
   late bool loading = false;

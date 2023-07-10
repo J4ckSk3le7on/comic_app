@@ -1,5 +1,7 @@
 import 'package:comic_app/core/controllers/home_page_controller.dart';
+import 'package:comic_app/pages/home_page/widgets/description_widget.dart';
 import 'package:comic_app/pages/home_page/widgets/home_page_appbar.dart';
+import 'package:comic_app/pages/home_page/widgets/image_widget.dart';
 import 'package:comic_app/pages/home_page/widgets/paginate_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -25,7 +27,7 @@ class HomePageState extends StateMVC<HomePage> {
     super.initState();
     viewType = HomeViewType.list;
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      _controller.fetchData(refresh: true);
+      _controller.fetchData(refresh: false);
     });
   }
 
@@ -38,7 +40,7 @@ class HomePageState extends StateMVC<HomePage> {
         },
         currentViewType: viewType,
       ),
-      body: PaginateWidget(
+      body: _controller.list == null ? const Center(child: CircularProgressIndicator()) : PaginateWidget(
         viewType: viewType,
         loading: HomePageController().loading,
         error: HomePageController().error,
@@ -53,7 +55,38 @@ class HomePageState extends StateMVC<HomePage> {
         onError: () async {
           _controller.fetchData(refresh: true);
         },
-        items: const [],
+        items: _controller.list?.map((result) {
+          if (viewType == HomeViewType.grid) {
+            return Column(
+              children: [
+                ImageWidget(
+                  imageUrl: result.image.originalUrl,
+                  viewType: viewType,
+                ),
+                // const SizedBox(height: 10),
+                DescriptionWidget(
+                  name: result.volume.name,
+                  date: result.dateAdded.toString()
+                ),
+                const SizedBox(height: 30),
+              ],
+            );
+          } else {
+            return Row(
+              children: [
+                ImageWidget(
+                  imageUrl: result.image.originalUrl,
+                  viewType: viewType,
+                ),
+                const SizedBox(width: 10),
+                DescriptionWidget(
+                  name: result.volume.name,
+                  date: result.dateAdded.toString()
+                )
+              ],
+            );
+          }
+        }).toList(),
       ),
     );
   }
